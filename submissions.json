@@ -689,6 +689,24 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF80991206": {
+    "contest_id": 1325,
+    "language": "GNU C++17",
+    "path": "codeforces\\1325\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "EhAb AnD gCd",
+    "problem_url": "https://codeforces.com/contest/1325/problem/A",
+    "submission_id": "CF80991206",
+    "submission_url": "https://codeforces.com/contest/1325/submission/80991206",
+    "tags": [
+      "constructive algorithms",
+      "greedy",
+      "number theory",
+      "*800"
+    ],
+    "timestamp": "May/23/2020 12:27"
+  },
   "CF80994981": {
     "contest_id": 1332,
     "language": "GNU C++17",
