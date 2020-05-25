@@ -27,6 +27,13 @@ int main() {
     #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL) ; cout.tie(NULL) ;
+
+    int sieve=1e6;
+    bool prime[sieve+1];
+    memset(prime,true,sizeof(prime));
+    prime[0]=false;
+    prime[1]=false;
+    for(int i=2;i*i<=sieve;i++) if(prime[i]) for(int j=i*i;j<=sieve;j+=i) prime[j]=false;
     
     int t; cin>>t; while(t--) {
         int n; cin>>n;
@@ -47,6 +54,7 @@ int main() {
         }
         if(flag) cout<<"NO\n";
         else cout<<"YES\n";
+        
     }
     return 0 ;  
-}      
+}
