@@ -40,30 +40,24 @@ int main()
         f(i, 0, n) cin >> v[i];
         mii mp;
         f(i, 0, d)
-            mp[v[i]]++;
-
-        // for (auto it : mp)
-        //     cout << it.fr << " " << it.sc<<endl;
-        //cout << endl;
+        {
+            if (mp[v[i]] == 0)
+                mp[v[i]] = 1;
+            else
+                mp[v[i]]++;
+        }
         int ans = len(mp);
         int cnt = ans;
-        //cout<<"cnt "<<cnt<<endl;
         f(i, 1, n - d + 1)
         {
-            
-            mp[v[i + d - 1]]++;
-            if (mp[v[i + d - 1]] == 1)
-                cnt++;
-
-            mp[v[i - 1]]--;
-
-            if (!mp[v[i - 1]])
-                cnt--;
-
-            // for (auto it : mp)
-            //     cout << it.fr << " " << it.sc<<endl;
-            // cout << endl;
-            //  cout<<"cnt "<<cnt<<endl;
+            if (mp[v[i + d - 1]] == 0)
+                cnt++, mp[v[i + d - 1]] = 1;
+            else
+                mp[v[i + d - 1]]++;
+            if (mp[v[i - 1]] == 1)
+                cnt--, mp[v[i - 1]]--;
+            else
+                mp[v[i - 1]]--;
             ans = min(ans, cnt);
         }
         cout << ans << endl;
