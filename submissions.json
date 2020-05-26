@@ -689,6 +689,22 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF81451003": {
+    "contest_id": 1247,
+    "language": "GNU C++17",
+    "path": "codeforces\\1247\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Forgetting Things",
+    "problem_url": "https://codeforces.com/contest/1247/problem/A",
+    "submission_id": "CF81451003",
+    "submission_url": "https://codeforces.com/contest/1247/submission/81451003",
+    "tags": [
+      "math",
+      "*900"
+    ],
+    "timestamp": "May/26/2020 13:55"
+  },
   "CF81475395": {
     "contest_id": 1247,
     "language": "GNU C++17",
