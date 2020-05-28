@@ -38,22 +38,23 @@ int main()
     f(i, y + 1, MOD)
     {
         y = i;
-        vi v(10);
-        int flag = 1;
+        vi v, a;
         while (y)
         {
-            if (v[y % 10])
-            {
-                flag = 0;
-                break;
-            }
-            v[y % 10] = 1;
+            a.pb(y % 10);
+            v.pb(y % 10);
             y /= 10;
         }
-        if (flag)
+        sort(all(v));
+        int flag = 1;
+        f(i, 0, len(v) - 1) if (v[i] == v[i + 1])
         {
-            cout << i << endl;
+            flag = 0;
             break;
+        }
+        if(flag) {
+            for(auto i=a.rbegin();i<a.rend();i++) cout<<*i;
+            break; 
         }
     }
 
