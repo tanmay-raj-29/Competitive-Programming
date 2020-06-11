@@ -30,15 +30,16 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n,cnt=0; cin>>n;
-    string s; cin>>s;
-    int curr=3;
-    f(i,3,len(s)) {
-        if(curr==0) {
-            if(s[i-1]==s[i-2] && s[i-2]==s[i-3] ) cnt++;
-        }
-        curr=(curr+1)%n;
+    int n, cnt = 0;
+    cin >> n;
+    string s;
+    cin >> s;
+    int curr = 3;
+    for (int i = n; i < len(s); i += n)
+    {
+        if (s[i - 1] == s[i - 2] && s[i - 2] == s[i - 3])
+            cnt++;
     }
-    cout<<cnt;
+    cout << cnt;
     return 0;
 }
