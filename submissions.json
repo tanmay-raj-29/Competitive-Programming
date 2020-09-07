@@ -689,6 +689,23 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF92152786": {
+    "contest_id": 608,
+    "language": "GNU C++17",
+    "path": "codeforces\\608\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Hamming Distance Sum",
+    "problem_url": "https://codeforces.com/contest/608/problem/B",
+    "submission_id": "CF92152786",
+    "submission_url": "https://codeforces.com/contest/608/submission/92152786",
+    "tags": [
+      "combinatorics",
+      "strings",
+      "*1500"
+    ],
+    "timestamp": "Sep/07/2020 21:52"
+  },
   "CF92764453": {
     "contest_id": 282,
     "language": "GNU C++17",
