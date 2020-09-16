@@ -689,6 +689,23 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF92978033": {
+    "contest_id": 276,
+    "language": "GNU C++17",
+    "path": "codeforces\\276\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Little Girl and Game",
+    "problem_url": "https://codeforces.com/contest/276/problem/B",
+    "submission_id": "CF92978033",
+    "submission_url": "https://codeforces.com/contest/276/submission/92978033",
+    "tags": [
+      "games",
+      "greedy",
+      "*1300"
+    ],
+    "timestamp": "Sep/16/2020 18:58"
+  },
   "CF92984249": {
     "contest_id": 525,
     "language": "GNU C++17",
