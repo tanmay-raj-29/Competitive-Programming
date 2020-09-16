@@ -1,6 +1,6 @@
-// #pragma GCC optimize("Ofast")
-// #pragma GCC target("avx,avx2,fma")
-// #pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization ("unroll-loops")
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -37,17 +37,15 @@ void solve()
     tr(it,a) cin>>it;
     vi v(n+1);
     tr(it,a) {
-        v[it]++;
+        f(i,it,it+(n-it)/2+1) v[i]++;
     }
-    int prev=0;
     f(i,1,n/2+1+n%2) {
-        if((v[i]+prev) & 1) {
+        if(v[i]%2) {
             // deb3(i-1,n-i,s[i-1]);
             char tmp=s[i-1];
             s[i-1]=s[n-i];
             s[n-i]=tmp;
         }
-        prev+=v[i];
     }
     cout<<s;
 }
