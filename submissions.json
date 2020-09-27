@@ -689,6 +689,22 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF93933440": {
+    "contest_id": 304,
+    "language": "GNU C++17",
+    "path": "codeforces\\304\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Lucky Permutation Triple",
+    "problem_url": "https://codeforces.com/contest/304/problem/C",
+    "submission_id": "CF93933440",
+    "submission_url": "https://codeforces.com/contest/304/submission/93933440",
+    "tags": [
+      "constructive algorithms",
+      "*1300"
+    ],
+    "timestamp": "Sep/27/2020 13:15"
+  },
   "CF93956389": {
     "contest_id": 546,
     "language": "GNU C++17",
