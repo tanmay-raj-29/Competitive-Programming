@@ -46,16 +46,24 @@ const int N = 3e5 + 1;
 void solve()
 {
     int n; cin>>n;
-    vi a(n);
-    tr(it,a) cin>>it;
-    sort(all(a));
-    int cnt=1,ans=1;
+    int cnt=n+1;
+    mii a;
     f(i,0,n) {
-        // deb(ans);
-        if(a[i]<=cnt) ans=cnt+1;    
-        cnt++;
+        int x; cin>>x;
+        a[x]++;
     }
-    cout<<ans<<endl;
+    int ans=cnt;
+    for(auto it=a.rbegin();it!=a.rend();it++) {
+        int x=it->sc, i=it->fr;
+
+        if(cnt-1>=i) continue;
+        else {
+            ans=cnt-x;
+        }
+        
+        cnt-=x;
+    }
+    cout<<ans<<"\n";
 }
 
 int main()
