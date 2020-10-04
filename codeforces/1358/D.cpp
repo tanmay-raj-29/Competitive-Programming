@@ -26,6 +26,7 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cout << ", "; _print(v..
 #define f(i, k, n) for (int i = k; i < n; i++)
 #define r(i, k, n) for (int i = k; i >= n; i--)
 #define ll long long
+#define int ll
 #define pb push_back
 #define fr first
 #define sc second
@@ -39,7 +40,7 @@ typedef vector<pii> vpii;
 typedef vector<string> vs;
 typedef vector<vi> vvi;
 // =================
-#define int ll
+
 const int mod = 1e9;
 const int N = 3e5 + 1;
 
@@ -49,7 +50,7 @@ void solve()
     vi d(n);
     vector<ll> pfx1,pfx2;
     tr(it,d) cin>>it;
-    bool fg=0;
+    bool flag=0;
     pfx1.reserve(2*n+1);
     pfx2.reserve(2*n+1);
     pfx1.pb(0);
@@ -60,39 +61,42 @@ void solve()
         pfx1.pb(r);
         pfx2.pb(d[i]+prev);
         prev+=d[i];
-        if(!fg && i==n-1) i=-1,fg=1;
+        if(!flag && i==n-1) i=-1,flag=1;
     }
     ll ans=0,l=0;
 
-    ll cnt=1;
+    int cnt=1;
     while (cnt<2*n+1)
     {
         if(pfx2[cnt]-pfx2[0]>=x) break;
         cnt++;
     }
-   
-    ll flag=0;
-    f(i,cnt,2*n+1) {
-        ll l=0,an=0;
-        r=i;
-        while (l<=r)
-        {
-            ll mid=l+(r-l)/2;
-            if(pfx2[i]-pfx2[mid]<=x) {
-                flag=mid;
-                r=mid-1;
-            } else l=mid+1;   
-        }
-        an=pfx1[i]-pfx1[flag];
-        if(pfx2[i]-pfx2[flag]!=x) {
-            ll days=pfx2[flag]-pfx2[flag-1];
-            ll rem= days -  (x-(pfx2[i]-pfx2[flag]));
-            an+=days*(days+1)/2 - rem*(rem+1)/2;
-        }
-        // deb(an,i,flag);
-        ans=max(ans,an);
-    }
 
+    while (l<=r)
+    {
+        ll mid=l+(r-l)/2;
+        bool ok=0;
+        f(i,cnt,2*n+1) {
+            int left=lower_bound(all(pfx2),pfx2[i]-x)-pfx2.begin();
+            // deb(left,pfx2[i]);
+            if(pfx2[i]-pfx2[left]==x) {
+                if(pfx1[i]-pfx1[left]>=mid) {
+                    ok=1;
+                    break;
+                }
+            }
+            else{
+                int days=pfx2[left]-pfx2[left-1];
+                int rem= days -  (x-(pfx2[i]-pfx2[left]));
+                if(pfx1[i]-pfx1[left]+ 1ll*days*(days+1)/2 - 1ll*rem*(rem+1)/2 >=mid) {
+                    ok=1;
+                    break;
+                }
+            }
+        }
+        ok?l=mid+1,ans=mid:r=mid-1;
+        // deb(ans,mid,ok,l,r);
+    }
     cout<<ans;
 
 }
