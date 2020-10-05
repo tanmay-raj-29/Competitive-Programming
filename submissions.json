@@ -1,4 +1,20 @@
 {
+  "AC17212006": {
+    "contest_id": "dp",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\dp\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Vacation",
+    "problem_url": "https://atcoder.jp/contests/dp/tasks/dp_c",
+    "submission_id": "AC17212006",
+    "submission_url": "https://atcoder.jp/contests/dp/submissions/17212006",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Oct/05/2020 20:55"
+  },
   "AC17213095": {
     "contest_id": "dp",
     "language": "C++ (GCC 9.2.1)",
