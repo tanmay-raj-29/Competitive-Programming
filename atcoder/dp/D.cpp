@@ -36,27 +36,34 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 const int mod = 1e9+7;
 const int N = 3e5 + 1;
 
+struct item
+{
+    int v,w;
+};
+
+
 void solve()
 {
-    int n,W; cin>>n>>W;
-    vector<int> v(n),w(n);
+    int n,w; cin>>n>>w;
+    vector<item> itm;
     for(int i=0;i<n;i++) {
-        cin>>w[i]>>v[i];
+        int x,y; cin>>x>>y;
+        itm.pb({y,x});
     }
-    vector<vector<ll>> dp(n,vector<ll>(W+1,-mod));
-    dp[0][0]=0;
-    dp[0][w[0]]=v[0];
-    for(int id=1;id<n;id++) {
-        dp[id][0]=0;
-        for(int j=1;j<=W;j++) {
-            dp[id][j]=dp[id-1][j];
-            if(j-w[id]>=0) amax(dp[id][j],dp[id-1][j-w[id]]+v[id]);
+    vector<ll> dp(w+1,0);
+
+    for(int j=0;j<n;j++) {
+        for(int i=w;i>=0;i--) {
+            if(i-itm[j].w>=0 && ( dp[i-itm[j].w] || i-itm[j].w==0))  {
+                amax(dp[i],dp[i-itm[j].w]+itm[j].v);
+            }
         }
     }
     ll ans=0;
-    for(int i=0;i<=W;i++) amax(ans,dp[n-1][i]);
+    for(int i=0;i<w+1;i++) amax(ans,dp[i]);
     cout<<ans;
 }
+
 int main()
 {
 #ifndef ONLINE_JUDGE
