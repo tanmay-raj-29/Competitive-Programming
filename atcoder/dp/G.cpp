@@ -25,29 +25,19 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cout << ", "; _print(v..
 template<typename T,typename T1>T amax(T &a,T1 b){if(b>a)a=b;return a;}
 template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 // =================
-#define f(i, k, n) for (int i = k; i < n; i++)
-#define r(i, k, n) for (int i = k; i >= n; i--)
 #define ll long long
-#define pb push_back
 #define fr first
 #define sc second
+#define pb push_back
 #define len(s) s.size()
 #define all(v) v.begin(), v.end()
-#define tr(it, v) for (auto &it : v)
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef map<int, int> mii;
-typedef vector<pii> vpii;
-typedef vector<string> vs;
-typedef vector<vi> vvi;
 // =================
 
 const int mod = 1e9+7;
-const int N = 1e5 + 1;
-vi dp(N);
+const int N = 3e5 + 1;
 
 vector<int> g[N];
-int A[N];
+vector<int> dp(N,-1);
 
 void impgraph(int n, int m)
 {
@@ -61,35 +51,31 @@ void impgraph(int n, int m)
 
 void dfs(int u, int par)
 {
-    A[u]=1;
-    dp[u]=par;
-    for (int v : g[u])
-    {
-        if (A[v])
-        {
-            amax(dp[u],dp[v]+1);
-            continue;
-        }
-        dfs(v,par);
+    if(dp[u]==-1) dp[u]=0;
+    for(int v : g[u]) {
+        if(dp[v]==-1) dfs(v,par+1);
         amax(dp[u],dp[v]+1);
-        // deb(dp);
     }
 }
 
 void solve()
 {
-    int n,m;
-    cin>>n>>m;
+    int n,m; cin>>n>>m;
     impgraph(n,m);
-    f(i,1,n+1) {
-        if(!A[i]) dfs(i,0); 
+    
+    for(int i=1;i<=n;i++) {
+        if(dp[i]==-1) {
+            dfs(i,0);
+        }
     }
+
+    // deb(dp);
     int ans=0;
-    f(i,1,n+1) amax(ans,dp[i]);
+    for(int i=1;i<=n;i++) amax(ans,dp[i]);
     cout<<ans;
 }
 
-signed main()
+int main()
 {
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
