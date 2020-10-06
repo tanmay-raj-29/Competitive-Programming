@@ -25,50 +25,41 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cout << ", "; _print(v..
 template<typename T,typename T1>T amax(T &a,T1 b){if(b>a)a=b;return a;}
 template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 // =================
-#define f(i, k, n) for (int i = k; i < n; i++)
-#define r(i, k, n) for (int i = k; i >= n; i--)
 #define ll long long
-#define pb push_back
 #define fr first
 #define sc second
+#define pb push_back
 #define len(s) s.size()
 #define all(v) v.begin(), v.end()
-#define tr(it, v) for (auto &it : v)
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef map<int, int> mii;
-typedef vector<pii> vpii;
-typedef vector<string> vs;
-typedef vector<vi> vvi;
 // =================
 
 const int mod = 1e9+7;
-const int N = 3e5;
+const int N = 3e5 + 1;
 
 void solve()
 {
-    int n,totW;
-    cin>>n>>totW;
-    vi w(n),v(n);
-    f(i,0,n) cin>>w[i]>>v[i];
-    vi dp(N+1,mod);
-    dp[0]=0;
-    f(i,0,n) {
-        r(j,N/3,0) {
-            if(j-v[i]>=0 && dp[j-v[i]]+w[i]<=totW) amin(dp[j],dp[j-v[i]]+w[i]);
+    int n,W; cin>>n>>W;
+    vector<int> v(n),w(n);
+    for(int i=0;i<n;i++) cin>>w[i]>>v[i];
+    vector<vector<ll>> dp(n,vector<ll>(N,mod));
+    dp[0][0]=0;
+    dp[0][v[0]]=w[0];
+
+    for(int id=1;id<n;id++) {
+        dp[id][0]=0;
+        for(int value=1;value<N;value++) {
+            dp[id][value]=dp[id-1][value];
+            if(value-v[id]>=0 )
+            amin(dp[id][value],dp[id-1][value-v[id]]+w[id]);
         }
     }
-    int ans=0;
-    r(i,N,0) {
-        if(dp[i]<=totW) {
-            ans=i;
-            break;
-        }
-    }
+
+    ll ans=0;
+    for(int i=0;i<N;i++) if(dp[n-1][i]<=W) ans=i;
     cout<<ans;
 }
 
-signed main()
+int main()
 {
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
