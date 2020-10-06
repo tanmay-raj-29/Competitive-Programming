@@ -43,7 +43,6 @@ void solve()
     vector<vector<int>> dp(n,vector<int>(m,0));
 	vector<vector<int>> choice(n,vector<int>(m,0));
 	dp[0][0]=s[0]==t[0];
-	choice[0][0]= s[0]==t[0]+1;
 	for(int i=0;i<n;i++) {
 		for(int j=0;j<m;j++) {
 			if(i) dp[i][j]=dp[i-1][j],choice[i][j]=0;
