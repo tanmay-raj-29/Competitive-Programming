@@ -1,4 +1,20 @@
 {
+  "AC17229924": {
+    "contest_id": "abc179",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc179\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Go to Jail",
+    "problem_url": "https://atcoder.jp/contests/abc179/tasks/abc179_b",
+    "submission_id": "AC17229924",
+    "submission_url": "https://atcoder.jp/contests/abc179/submissions/17229924",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Oct/07/2020 07:35"
+  },
   "AC17230004": {
     "contest_id": "abc179",
     "language": "C++ (GCC 9.2.1)",
