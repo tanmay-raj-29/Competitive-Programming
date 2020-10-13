@@ -47,28 +47,52 @@ const int N = 3e5 + 1;
 
 void solve()
 {
-	// int n;
-	ll p,d; 
-	cin>>p>>d;
-	ll curr=p,prev=p;
-	ll base=10;
-	while (curr%10==9)
-	{
-		base*=10;
-		curr/=10;
-	}
-	curr=p;
-	while (p-curr<=d && curr!=-1)
-	{
-		prev=curr;
-		curr=p-(p%base)-1;
-		base*=10;
-	}
-	// if(prev%10!=9) {
-	// 	cout<<p;
+	ll p,d; cin>>p>>d;
+	ll num=p;
+	ll myNum=9;
+	int digits=1;
+	// while (num && digits<18 && myNum*10+9<=p)
+	// {
+	// 	myNum*=10;
+	// 	myNum+=9;
+	// 	digits++;
+	// 	num/=10;
+	// }
+	// // deb(myNum,p);
+	// if(myNum+d>=p) {
+	// 	cout<<myNum;
 	// 	return;
 	// }
-	cout<<prev;
+	myNum=p-d;
+	ll n=myNum;
+	ll i=1;
+	// deb(myNum);
+	while (n)
+	{
+		n/=10;
+		digits++;
+	}
+	n=myNum;
+	int digit=n%10;
+	while (n || myNum+ i*(9-digit)>0)
+	{
+		if(myNum + i*(9-digit) <=p) {
+			myNum+=(9-digit)*i;
+			i*=10;
+		} 
+		else {
+			while (myNum+i<=p)
+			{
+				myNum+=i;
+			}
+			break;
+		}
+		// deb(myNum,digit,i,n);
+		n/=10;
+		digit=n%10;
+	}
+	
+	cout<<myNum;
 }
 
 signed main()
