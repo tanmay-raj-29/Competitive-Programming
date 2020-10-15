@@ -689,6 +689,22 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF95558023": {
+    "contest_id": 378,
+    "language": "GNU C++17",
+    "path": "codeforces\\378\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Maze",
+    "problem_url": "https://codeforces.com/contest/378/problem/C",
+    "submission_id": "CF95558023",
+    "submission_url": "https://codeforces.com/contest/378/submission/95558023",
+    "tags": [
+      "dfs and similar",
+      "*1600"
+    ],
+    "timestamp": "Oct/15/2020 11:23"
+  },
   "CF95647153": {
     "contest_id": 1097,
     "language": "GNU C++17",
