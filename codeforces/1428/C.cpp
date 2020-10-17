@@ -47,18 +47,32 @@ const int N = 3e5 + 1;
 
 void solve()
 {
+    string s;
     int n;
-    string s; cin>>s;
+    cin>>s;
     n=len(s);
-    stack<char> ans;
-    f(i,0,n) {
-        if(s[i]=='A') ans.push('A');
-        else if(s[i]=='B') {
-            if(ans.empty()) ans.push('B');
-            else ans.pop();
+    int i=0,numA=0,numB=0,cnt=0;
+    while (i<n)
+    {
+        if(s[i]=='B' && numA>0) {
+            numA--;
+            cnt--;
+            i++;
+            continue;
         }
+        else if(s[i]=='B' && numB>0) {
+            numB--;
+            cnt--;
+            i++;
+            continue;
+        }
+        numA+=(s[i]=='A');
+        numB+=(s[i]=='B');
+        cnt++;
+        i++;
     }
-    cout<<len(ans)<<"\n";
+    cout<<cnt<<"\n";
+    
 }
 
 signed main()
