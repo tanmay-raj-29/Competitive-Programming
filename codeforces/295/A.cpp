@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-// #pragma GCC optimize("Ofast")
-// #pragma GCC target("avx,avx2,fma")
-// #pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization ("unroll-loops")
 using namespace std;
 void __print(int x) {cout << x;}
 void __print(long x) {cout << x;}
