@@ -53,11 +53,11 @@ void solve()
     s.insert(0);
     int prev=mod;
     for(int i=1;i*i<=n;i++) {
-        // if(n/i < prev) {
+        if(n/i < prev) {
             s.insert(n/i);
             s.insert(n/(n/i));
             prev=n/i;
-        // }
+        }
     }
     cout<<len(s)<<"\n";
     tr(it,s) cout<<it<<" ";
