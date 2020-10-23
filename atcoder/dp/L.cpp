@@ -59,20 +59,18 @@ void solve()
     }
     f(i,0,n) dp[i][i][0]=a[i],dp[i][i][1]=0;
 
-    f(l,0,n) {
-        f(r,l+1,n) {
-            dp[l][r][0]=max(dp[l][r-1][1]+a[r],dp[l+1][r][1]+a[l]);
-            dp[l][r][1]=min(dp[l][r-1][0],dp[l+1][r][0]);    
-        }
-    }
-    f(r,0,n) {
-        r(l,r-1,0) {
-            dp[l][r][0]=max(dp[l][r-1][1]+a[r],dp[l+1][r][1]+a[l]);
-            dp[l][r][1]=min(dp[l][r-1][0],dp[l+1][r][0]);
-        }
-    }
     // f(i,0,n) {
-    //     f(j,0,n) {
+    //     f(j,i+1,n) {
+    //         dp[i][j][0]=dp[i][j-1][1]+a[j];
+    //         dp[i][j][1]=dp[i][j-1][0];    
+    //     }
+    //     r(j,i-1,0) {
+    //         dp[j][i][0]=dp[j+1][i][1]+a[j];
+    //         dp[j][i][1]=dp[j+1][i][0];
+    //     }
+    // }
+    // f(i,0,n) {
+    //     f(j,1,n) {
     //         if(j-1>=0) {
     //             amax(dp[i][j][0],dp[i][j-1][1]+a[j]);
     //             amin(dp[i][j][1],dp[i][j-1][0]);
@@ -84,13 +82,13 @@ void solve()
     //     }
     // }
 
-    // f(seg,1,n) {
-    //     for(int l=0;l+seg<n;l++) {
-    //         int r=l+seg;
-    //         dp[l][r][0]=max(dp[l][r-1][1]+a[r],dp[l+1][r][1]+a[l]);
-    //         dp[l][r][1]=min(dp[l][r-1][0],dp[l+1][r][0]);
-    //     }
-    // }
+    f(seg,1,n) {
+        for(int l=0;l+seg<n;l++) {
+            int r=l+seg;
+            dp[l][r][0]=max(dp[l][r-1][1]+a[r],dp[l+1][r][1]+a[l]);
+            dp[l][r][1]=min(dp[l][r-1][0],dp[l+1][r][0]);
+        }
+    }
 
 
     // deb(sum);    
