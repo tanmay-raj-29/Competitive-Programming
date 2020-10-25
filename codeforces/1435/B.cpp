@@ -49,13 +49,51 @@ void solve()
 {
     int n,m;
     cin>>n>>m;
-    int row[n][m],col[m][n];
-    vpii pos(n*m+1);
-    f(i,0,n) f(j,0,m) cin>>row[i][j],pos[row[i][j]].sc=j;
-    f(i,0,m) f(j,0,n) cin>>col[i][j],pos[col[i][j]].fr=j;
+    int rows[n][m],cols[m][n];
+    f(i,0,n) f(j,0,m) cin>>rows[i][j];
+    f(i,0,m) f(j,0,n) cin>>cols[i][j];
+    
     int ans[n][m];
-    f(i,1,n*m+1) {
-        ans[pos[i].fr][pos[i].sc]=i;
+
+    f(i,0,m) {
+        vi fs;
+        f(j,0,n) fs.pb(rows[j][i]);
+        sort(all(fs));
+        // deb(fs);
+        bool found=1;
+        int index=0;
+        f(j,0,m) {
+            found=1;
+            index=j;
+            // f(k,0,n) cout<<cols[j][k]<<" ";
+            // cout<<endl;
+            f(k,0,n) {
+                int req=cols[j][k];
+                int l=0,r=len(fs)-1;
+                bool ok=0;
+                while (l<=r)
+                {
+                    int mid=l+(r-l)/2;
+                    if(fs[mid]==req) {
+                        ok=1;
+                        break;
+                    }
+                    else if(fs[mid]<req) l=mid+1;
+                    else r=mid-1;
+                }
+                // deb(ok,cols[j][k]);
+                if(!ok) {
+                    // cout<<index<<" R"<<endl;
+                    found=0;
+                    break;
+                }
+            }
+            if(found) break;
+        }
+        // deb(index);
+        if(found) {
+            f(j,0,n) ans[j][i]=cols[index][j];
+        }
     }
     f(i,0,n) {
         f(j,0,m) cout<<ans[i][j]<<" ";
