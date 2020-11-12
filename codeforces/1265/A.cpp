@@ -51,25 +51,32 @@ void solve()
     string s;
     cin>>s;
     n=len(s);
+    bool ok=1;
     f(i,0,n) {
         if(s[i]=='?') {
-            f(j,0,3) {
-                char c='a'+j;
-                bool ok=1;
-                if(i && s[i-1]==c) ok=0;
-                if(i+1<n && s[i+1]==c) ok=0;
-                if(ok) {
-                    s[i]=c;
-                    break;
+            if(i==0) {
+                if(i+1<n&&(s[i+1]=='?' || s[i+1]!='a')) s[i]='a';
+                else s[i]='b';
+            }
+            else {
+                if(s[i-1]=='a') {
+                    if(i+1<n && s[i+1]=='b') s[i]='c';
+                    else s[i]='b';
+                }
+                else if(s[i-1]=='b') {
+                    if(i+1<n && s[i+1]=='a') s[i]='c';
+                    else s[i]='a';
+                }
+                else {
+                    if(i+1<n && s[i+1]=='a') s[i]='b';
+                    else s[i]='a';
                 }
             }
         }
-        else if(i+1<n&&s[i]==s[i+1]) {
-            cout<<"-1\n";
-            return;
-        }
+        else if(i+1<n && s[i+1]==s[i]) ok=0;
     }
-    cout<<s<<"\n";
+    if(ok) cout<<s<<"\n";
+    else cout<<"-1\n";
 }
 
 signed main()
