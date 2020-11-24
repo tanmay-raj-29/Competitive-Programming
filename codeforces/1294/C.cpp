@@ -15,31 +15,47 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 const int mod = 1e9+7;
 const int N = 3e5 + 1;
 
+const int NUM=1e5+1;
+bool prime[NUM];
+vector<int> p;
+void sieve() {
+    memset(prime,true,sizeof(prime));
+    prime[0]=false;
+    prime[1]=false;
+    for(int i=2;i*i<=NUM;i++) if(prime[i]) for(int j=i*i;j<NUM;j+=i) prime[j]=false;
+    p.reserve(NUM/10);
+    f(i,0,NUM) if(prime[i]) p.pb(i);
+}
+
 void solve()
 {
     int n;
     cin>>n;
-    int a=1,b=1,c=1;
-    for(int i=2;i*i<=n;i++)
+    vector<int> fac;
+    f(i,0,len(p))
     {
-        if(n%i==0) 
+        while(n%p[i]==0)
         {
-            a=i;
-            break;
+            fac.pb(p[i]);
+            n/=p[i];
         }
     }
-    n/=a;
-    for(int i=2;i*i<=n;i++)
+    fac.pb(n);
+    if(len(fac)>2) 
     {
-        if(n%i==0 && i!=a)
+        int c1=1,c2=1;
+        f(i,1,len(fac)) 
         {
-            b=i;
-            break;
+            if(c1>fac[0]) c2*=fac[i];
+            else c1*=fac[i];
         }
+        if(c1!=c2 && c1!=fac[0] && c2!=fac[0] && c1!=1 && c2!=1) 
+        {
+            cout<<"YES\n"<<c1<<" "<<c2<<" "<<fac[0]<<"\n";
+            return;
+        }   
     }
-    c=n/b;
-    if(a!=1 && b!=1 && c!=1 && a!=b && a!=c && b!=c) cout<<"YES\n"<<a<<" "<<b<<" "<<c<<"\n";
-    else cout<<"NO\n";
+    cout<<"NO\n";
 }
 
 signed main()
@@ -48,6 +64,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
 
+    sieve();
     int t=1;
     cin>>t;
     while (t--)
