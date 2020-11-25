@@ -689,6 +689,22 @@
     ],
     "timestamp": "Dec/27/2020 14:02"
   },
+  "CF99516029": {
+    "contest_id": 1454,
+    "language": "GNU C++17",
+    "path": "codeforces\\1454\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Unique Bid Auction",
+    "problem_url": "https://codeforces.com/contest/1454/problem/B",
+    "submission_id": "CF99516029",
+    "submission_url": "https://codeforces.com/contest/1454/submission/99516029",
+    "tags": [
+      "implementation",
+      "*800"
+    ],
+    "timestamp": "Nov/25/2020 07:47"
+  },
   "CF99516227": {
     "contest_id": 1454,
     "language": "GNU C++17",
