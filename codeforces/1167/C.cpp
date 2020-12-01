@@ -13,37 +13,65 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 // =================
 
 const int mod = 1e9+7;
-const int N = 5e5 + 1;
+const int N = 3e5 + 1;
 
-vector<int> g[N];
-int vis[N],sz[N];
-int num=0;
-set<int> s;
-
-void dfs(int u, int par)
+struct DSU
 {
-    num++;
-    vis[u]=1;
-    for (int v : g[u])
+    int connected;
+    vector<int> par, sz;
+
+    void init(int n)   // initialise
     {
-        if (vis[v])
-        {
-            continue;
-        }
-        dfs(v, par);
+        par = sz = vector<int> (n + 1, 0);
+        for(int i = 1; i <= n; i++)
+            par[i] = i, sz[i] = 1;
+        connected = n;
     }
-    s.insert(u);
-}
+
+    int getPar(int u)   // get parent
+    {
+        while(u != par[u])
+        {
+            par[u] = par[par[u]];
+            u = par[u];
+        }
+        return u;
+    }
+
+    int getSize(int u)    // get size
+    {
+        return sz[getPar(u)];
+    }
+
+    void unite(int u, int v)   // union(u,v)
+    {
+        int par1 = getPar(u), par2 = getPar(v);
+
+        if(par1 == par2)
+            return;
+
+        connected--;
+
+        if(sz[par1] > sz[par2])
+            swap(par1, par2);
+
+        sz[par2] += sz[par1];
+        sz[par1] = 0;
+        par[par1] = par[par2];
+    }
+};
 
 void solve()
 {
     int n,m;
     cin>>n>>m;
+    DSU dsu;
+    dsu.init(n);
     while(m--)
     {
         int k;
         cin>>k;
-        int prev=0;
+        int prev;
         if(k) 
         {
             cin>>prev;
@@ -53,25 +81,11 @@ void solve()
         {
             int curr;
             cin>>curr;
-            g[prev].pb(curr);
-            g[curr].pb(prev);
+            dsu.unite(prev,curr);
             prev=curr;
         }
     }
-    f(i,1,n+1)
-    {
-        if(!vis[i]) 
-        {
-            dfs(i,0);
-            for(auto &it:s)
-            {
-                sz[it]=num;
-            }
-            num=0;
-            s.clear();
-        }
-    }
-    f(i,1,n+1) cout<<sz[i]<<" ";
+    f(i,1,n+1) cout<<dsu.sz[dsu.getPar(i)]<<" ";
 }
 
 signed main()
