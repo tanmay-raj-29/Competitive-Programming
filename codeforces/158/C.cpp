@@ -51,6 +51,7 @@ void solve()
                 }
                 else if(len(path)==0 || path[len(path)-1]!='/') path.pb('/');
             }
+            if(len(path)==0 || path[len(path)-1]!='/') path.pb('/');
         }
     }
 }
