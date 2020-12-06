@@ -21,41 +21,36 @@ void solve()
     int n;
     cin>>n;
     char mat[n][n];
-    int cnt[2][3]={0,0,0,0,0,0};
-    f(i,0,n) f(j,0,n) 
+    f(i,0,n) f(j,0,n) cin>>mat[i][j];
+    if(n<3)
     {
-        cin>>mat[i][j];
-        cnt[0][(i+j)%3]+=mat[i][j]=='X';
-        cnt[1][(i+j)%3]+=mat[i][j]=='O';
+        f(i,0,n)
+        {
+            f(j,0,n) cout<<mat[i][j];
+            cout<<"\n";
+        }
+        return;
     }
-    int optX,optO,mx=mod;
+    int cnt[2][3]={0,0,0,0,0,0};
+    f(i,0,n)
+    {
+        f(j,0,n)
+        {
+            cnt[0][(i+j)%3]+=mat[i][j]=='X';
+            cnt[1][(i+j)%3]+=mat[i][j]=='O';
+        }
+    }
+    int mx=mod,optX,optO;
     f(i,0,3)
     {
-        f(j,0,3)
-        {
-            if(i!=j)
-            {
-                if(cnt[0][i]+cnt[1][j]<mx)
-                {
-                    mx=cnt[0][i]+cnt[1][j];
-                    optX=i;
-                    optO=j;
-                }
-                if(cnt[0][j]+cnt[1][i]<mx)
-                {
-                    mx=cnt[0][j]+cnt[1][i];
-                    optX=j;
-                    optO=i;
-                }
-            }
-        }
+        f(j,0,3) if(i!=j) if(cnt[0][i]+cnt[1][j]<mx) optX=i,optO=j,mx=cnt[0][i]+cnt[1][j];
     }
     f(i,0,n)
     {
         f(j,0,n)
         {
-            if(mat[i][j]!='.' && (i+j)%3==optX%3) mat[i][j]='O';
-            if(mat[i][j]!='.' && (i+j)%3==optO%3) mat[i][j]='X';
+            if((i+j)%3==optX%3 && mat[i][j]=='X') mat[i][j]='O';
+            else if((i+j)%3==optO%3 && mat[i][j]=='O') mat[i][j]='X';
         }
     }
     f(i,0,n)
