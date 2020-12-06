@@ -26,18 +26,19 @@ void solve()
         cin>>it;
     }
     sort(all(v));
-    int l=n/2,r=n-1,opt=l,opt_req=0;
-    while(l<=r)
+    int curr=n/2 + 1,ptr=n/2;
+    while(k>0 && curr<n)
     {
-        int mid=l+(r-l)/2;
-        bool OK=1;
-        int req=0;
-        f(i,n/2+1,mid+1) req+=(i-n/2)*(v[i]-v[i-1]);
-        if(req>k) OK=0; 
-        if(OK) l=mid+1,opt=mid,opt_req=req;
-        else r=mid-1;
+        int req=(curr-ptr)*(v[curr]-v[ptr]);
+        if(req>k) 
+        {
+            v[n/2]+=k/(curr-ptr);
+            k=0;
+            break;
+        }
+        else v[ptr]=v[curr],k-=req,curr++;
     }
-    cout<<v[opt]+(k-opt_req)/(opt-n/2+1);
+    cout<<v[n/2]+k/(curr-ptr);
 }
 
 signed main()
