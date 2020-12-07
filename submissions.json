@@ -1,4 +1,21 @@
 {
+  "CF100643875": {
+    "contest_id": 412,
+    "language": "GNU C++17",
+    "path": "codeforces\\412\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Pattern",
+    "problem_url": "https://codeforces.com/contest/412/problem/C",
+    "submission_id": "CF100643875",
+    "submission_url": "https://codeforces.com/contest/412/submission/100643875",
+    "tags": [
+      "implementation",
+      "strings",
+      "*1200"
+    ],
+    "timestamp": "Dec/07/2020 22:06"
+  },
   "CF101354431": {
     "contest_id": 1462,
     "language": "GNU C++17",
