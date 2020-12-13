@@ -15,23 +15,20 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 // =================
 
 const int mod = 1e9+7;
-const int N = 3e2 + 1;
-
-int dp[N][N];
+const int N = 3e5 + 1;
 
 void solve()
 {
     int n;
     cin>>n;
-    dp[0][0]=1;
-    f(i,1,n+1)
+    int ans=1;
+    n--;
+    f(i,0,11) 
     {
-        f(j,1,13)
-        {
-            f(k,0,i) dp[i][j]+=dp[k][j-1];
-        }
+        ans*=(n-i);
+        ans/=i+1;
     }
-    cout<<dp[n][12];
+    cout<<ans;
 }
 
 signed main()
