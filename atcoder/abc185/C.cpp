@@ -17,77 +17,21 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 const int mod = 1e9+7;
 const int N = 3e2 + 1;
 
-// int dp[N][N];
+int dp[N][N];
 
 void solve()
 {
     int n;
     cin>>n;
-    // dp[i][j] -> answer if i total length and j parts
-    int dp[N][N][2]; // dp[i][j][0] -> no cut at ith index & dp[i][j][1] -> cut at ith index
-    memset(dp,0,sizeof(dp));
-    // f(i,0,12) dp[0][i][0]=1;
-    dp[0][0][0]=1;
-    f(i,0,n+1)
+    dp[0][0]=1;
+    f(i,1,n+1)
     {
-        f(j,0,min(12ll,i+1))
+        f(j,1,13)
         {
-            if(i==0) dp[i][j][0]=1;
-            else
-            {
-                dp[i][j][0]=dp[i-1][j][0]+dp[i-1][j][1];
-                if(j>=1) dp[i][j][1]=dp[i-1][j-1][0]+dp[i-1][j-1][1];
-            }
+            f(k,0,i) dp[i][j]+=dp[k][j-1];
         }
     }
-  //   int L=n;
-  //   for(int i=0;i<=L;i++)
-  // {
-  //   for(int j=0;j<=11&&j<=i;j++)
-  //   {
-  //     if(i==0)
-  //     {
-  //       dp[i][j][0]=1;
-  //       dp[i][j][1]=0;
-  //     }
-  //     else
-  //     {
-  //       dp[i][j][0]=dp[i-1][j][0]+dp[i-1][j][1];
-  //       if(j==0)
-  //       {
-  //         dp[i][j][1]=0;
-  //       }
-  //       else
-  //         dp[i][j][1]=dp[i-1][j-1][0]+dp[i-1][j-1][1];
-  //     }
-  //   }
-  // }
-    cout<<dp[n][11][0];
-
-
-
-    // f(i,1,n+1)
-    // {
-    //     f(j,1,13)
-    //     {
-    //         f(k,0,i) dp[i][j]+=dp[k][j-1];
-    //     }
-    // }
-    
-    // f(i,1,n+1)
-    // {
-    //     f(j,1,min(12,i))
-    //     {
-    //         f(k,0,i) dp[i][j]+=dp[k][j-1];
-    //     }
-    // }
-
-    // f(i,0,n+1)
-    // {
-    //     f(j,0,12) cout<<dp[i][j]<<" ";
-    //     cout<<"\n";
-    // }
-    // cout<<dp[n][12];
+    cout<<dp[n][12];
 }
 
 signed main()
