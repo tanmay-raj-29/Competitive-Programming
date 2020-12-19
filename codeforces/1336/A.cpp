@@ -5,6 +5,7 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 // =================
 #define f(i, k, n) for (int i = k; i < n; i++)
 #define ll long long
+#define int ll
 #define pb push_back
 #define fr first
 #define sc second
@@ -61,12 +62,12 @@ void solve()
     }
     impgraph(n,n-1);
     dfs(1,0);
-    ll ans=0;
+    int ans=0;
     sort(all(V),greater<int>());
     for(auto &it:V)
     {
         k--;
-        ans+=1ll*it;
+        ans+=it;
         if(!k) break;
     }
     cout<<ans;
