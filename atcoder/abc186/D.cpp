@@ -30,9 +30,9 @@ void solve()
     int ans=0;
     f(i,0,n)
     {
-        ans+=(pf[n]-pf[i+1])-a[i]*(n-i-1);
+        ans+=(pf[n]-pf[i+1])-a[i]*(n-i-1) + a[i]*(i) - pf[i];
     }
-    cout<<ans;
+    cout<<ans/2;
 }
 
 signed main()
