@@ -1,4 +1,20 @@
 {
+  "CF102361637": {
+    "contest_id": 68,
+    "language": "GNU C++17",
+    "path": "codeforces\\68\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Energy exchange",
+    "problem_url": "https://codeforces.com/contest/68/problem/B",
+    "submission_id": "CF102361637",
+    "submission_url": "https://codeforces.com/contest/68/submission/102361637",
+    "tags": [
+      "binary search",
+      "*1600"
+    ],
+    "timestamp": "Dec/26/2020 08:22"
+  },
   "CF102361728": {
     "contest_id": 68,
     "language": "GNU C++17",

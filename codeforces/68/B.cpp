@@ -36,16 +36,16 @@ void solve()
             else less+=mid-a[i];
         }
         // cout<<l<<" "<<mid<<" "<<r<<" "<<more<<" "<<less<<"\n";
-        // if(more<1e-6) 
-        // {
-        //     l=mid;
-        //     continue;
-        // }
-        // else if(less<1e-6)
-        // {   
-        //     r=mid;
-        //     continue;
-        // }
+        if(more<1e-6) 
+        {
+            l=mid;
+            continue;
+        }
+        else if(less<1e-6)
+        {   
+            r=mid;
+            continue;
+        }
         if(more-more*k/100>=less) l=mid,ans=mid;
         else r=mid;
     }
