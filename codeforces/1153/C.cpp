@@ -15,6 +15,18 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 const int mod = 1e9+7;
 const int N = 3e5 + 1;
 
+bool check(string s)
+{
+    int cnt=0,n=len(s);
+    f(i,0,n)
+    {
+        cnt+=s[i]=='(';
+        cnt-=s[i]==')';
+        if(i!=n-1 && cnt<=0) return 0;
+    }
+    return !cnt;
+}
+
 void solve()
 {
     int n;
@@ -25,23 +37,18 @@ void solve()
         cout<<":(";
         return;
     }
-    int cntL=count(all(s),'('),cntR=count(all(s),')'),cnt=0;
+    int cntL=count(all(s),'('),cntR=count(all(s),')');
     f(i,0,n)
     {
         if(s[i]=='?')
         {
             if(cntL<n/2) s[i]='(',cntL++;
-            else s[i]=')',cntR++;
-        }
-        cnt+=s[i]=='(';
-        cnt-=s[i]==')';
-        if((i!=n-1 && cnt<=0) || (i==n-1 && cnt))  
-        {
-            cout<<":(";
-            return;
+            else s[i]=')';
         }
     }
-    cout<<s<<"\n";
+    // cout<<s<<"\n";
+    if(check(s)) cout<<s<<"\n";
+    else cout<<":(";
 }
 
 signed main()
